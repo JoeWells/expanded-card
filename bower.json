@@ -1,12 +1,22 @@
 {
-    "name": "my-repo",
-    "version": "0.0.0",
-    "description": "My awesome Custom Element",
+    "name": "animated-gallery",
+    "version": "0.0.1",
+    "description": "Material design animated gallery",
     "license": "MIT",
-    "main": "my-element.html",
+    "main": "animated-gallery.html",
     "keywords": [
         "polymer",
-        "web-components"
+        "web-components",
+        "material",
+        "design",
+        "Google",
+        "gallery",
+        "images",
+        "animated",
+        "animation",
+        "neon-animation",
+        "ajax",
+        "iron-ajax"
     ],
     "ignore": [
         "**/.*",

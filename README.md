@@ -1,24 +1,21 @@
-# &lt;my-repo&gt;
+# &lt;animated-gallery&gt;
+##### Currently WIP  
 
-> A bare minimum custom element starter-kit using [Polymer](http://www.polymer-project.org/).
->
-> Like [Yeoman](http://yeoman.io/)? Use the [generator-element](https://www.npmjs.org/package/generator-element) instead.
->
-> Looking for a working example? Check [hello-world-polymer](https://github.com/webcomponents/hello-world-polymer).
+This Polymer element displays an animated material design gallery (similar to the one shown [here](https://www.google.com/design/spec/components/grid-lists.html#)). Images are defined in an array with a `Title` and `Description` as well as the `URL`. Images are loaded using [iron-ajax](https://elements.polymer-project.org/elements/iron-ajax) and animations use [neon-animation](https://elements.polymer-project.org/elements/neon-animation).
 
 ## Demo
 
-[Check it live!](http://my-user.github.io/my-repo)
+[Check it live!](http://JoeWells.github.io/animated-gallery)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install my-repo --save
+$ bower install animated-gallery --save
 ```
 
-Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
+Or [download as ZIP](https://github.com/JoeWells/animated-gallery/archive/master.zip).
 
 ## Usage
 
@@ -31,58 +28,57 @@ Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
 2. Import custom element:
 
     ```html
-    <link rel="import" href="bower_components/my-repo/my-element.html">
+    <link rel="import" href="bower_components/animated-gallery/animated-gallery.html">
     ```
 
-3. Start using it!
+3. Start using it!  
 
+    HTML:  
     ```html
-    <my-element></my-element>
+    <animated-gallery id="myGallery"></animated-gallery>
+    ```
+    Javascript:
+    ```js
+    ready: function() {
+      this.$.myGallery.images = {
+        image1: {
+          title: "Image 1",
+          description: "This is my first image",
+          url: "images/my-image.png"
+        },
+        image2: {
+          title: "Image 2",
+          description: "My second image",
+          url: "images/my-image2.png"
+        }
+      }
+    }
     ```
 
 ## Options
 
-Attribute     | Options     | Default      | Description
----           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
+Attribute         | Options     | Default      | Description
+---               | ---         | ---          | ---
+`images`          | *Array*     | `null`       | An array containing the file path and details of images to show in the gallery (See above)
+`enable-animation`|*bool*       |`true`        |Specifies whether to enable animation for the gallery or not
 
 ## Methods
 
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
+Method           | Parameters                              | Returns     | Description
+---              | ---                                     | ---         | ---
+`openImage()`    | Name of the image as defined in `images`| Nothing     | Opens an image to the foreground as if a user had clicked on it
+`hideImage()`    | None                                    | Nothing     | Hides any open image
 
 ## Events
 
 Event         | Description
 ---           | ---
-`onsomething` | Triggers when something happens.
-
-## Development
-
-In order to run it locally you'll need to fetch some dependencies and a basic server setup.
-
-1. Install [bower](http://bower.io/) & [polyserve](https://npmjs.com/polyserve):
-
-    ```sh
-    $ npm install -g bower polyserve
-    ```
-
-2. Install local dependencies:
-
-    ```sh
-    $ bower install
-    ```
-
-3. Start development server and open `http://localhost:8080/components/my-repo/`.
-
-    ```sh
-    $ polyserve
-    ```
+`onImageOpen` | Triggers when an image is opened
+`onImageClose`| Triggers when an image is closed
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/my-user/my-repo/releases).
+For detailed changelog, check [Releases](https://github.com/JoeWells/animated-gallery/releases).
 
 ## License
 
