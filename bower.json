@@ -29,10 +29,17 @@
     "bower_components"
   ],
   "dependencies": {
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.3",
+    "neon-animation": "PolymerElements/neon-animation#~1.0.6",
+    "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.3",
     "polymer": "Polymer/polymer#^1.0.0"
   },
   "authors": [
-    { "name": "Joe Wells", "email": "joe.wells7777@gmail.com", "homepage": "http://github.com/JoeWells" }
+    {
+      "name": "Joe Wells",
+      "email": "joe.wells7777@gmail.com",
+      "homepage": "http://github.com/JoeWells"
+    }
   ],
   "repository": {
     "type": "git",
