@@ -9,6 +9,11 @@
 
 <dom-module id="expanded-card">
   <template>
+    <style>
+    p {
+      margin: 8px;
+    }
+    </style>
     <div class="vertical layout">
       <paper-icon-button on-tap="toggleExpand" class="self-end" id="expandButton"></paper-icon-button>
       <iron-collapse id="contentCollapse" opened="{{expanded}}">
