@@ -1,6 +1,6 @@
 {
   "name": "expanded-card",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Allows paper-material cards to be expanded using iron-collapse and an animated expand icon",
   "license": "MIT",
   "main": "exapanded-card.html",
