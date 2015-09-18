@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-icon"
 
 <dom-module id="expanded-card">
   <template>
@@ -19,15 +20,25 @@
         type: Boolean,
         value: false
       },
-
       expandMoreTitle: {
         type: String,
         value: "Show More"
       },
-
       expandLessTitle: {
         type: String,
         value: "Show Less"
+      },
+      enableRotateAnimation: {
+        type: Boolean,
+        value: true
+      },
+      expandMoreIcon: {
+        type: String,
+        value: "expand-more"
+      },
+      expandLessIcon: {
+        type: String,
+        value: "expand-less"
       }
     }
 
