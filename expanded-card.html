@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../neon-animation/neon-animation-runner-behaviour.html">
 
 <dom-module id="expanded-card">
   <template>
@@ -14,7 +15,7 @@
   <script>
   Polymer({
     is: 'expanded-card',
-    behaviours: [],
+    behaviours: [Polymer.NeonAnimationRunnerBehaviour],
     properties: {
       expanded: {
         type: Boolean,
@@ -39,8 +40,33 @@
       expandLessIcon: {
         type: String,
         value: "expand-less"
+      },
+      animationConfig: {
+        value: function() {
+          return {
+            'rotateIcon': {
+              name: 'transform-animation',
+              node: this.$.expandButton,
+              transformFrom: "rotate(0)",
+              transformTo: "rotate(180deg)",
+              timing: {duration: 500}
+            }
+          }
+        }
       }
-    }
+    },
+    listeners: {
+      'neon-animation-finish': '_onNeonAnimationFinish'
+    },
+    _onNeonAnimationFinish: function() {
+      if(this.expanded) {
+        this.$.iconButton.icon = "icons:expand-less";
+      }
+      else {
+        this.$.iconButton.icon = "icons:expand-more";
+      }
+      this.$.iconButton.disabled = false;
+    },
 
     // Fires when an instance of the element is created
     created: function() {},
@@ -59,12 +85,25 @@
       if(name == "expanded") {
         //Get new expanded attribute
         var expanded = this.getAtrribute(name);
+
+        //Set title
         if (expanded) {
           this.$.expandButton.title = this.expandLessTitle;
         }
         else {
           this.$.expandButton.title = this.expandMoreTitle;
         }
+
+        if((this.$.expandButton.icon == this.) && ) {
+          return;
+        }
+
+        //Disable button to prevent clicks
+        this.$.expandButton.disabled = true;
+        //Play rotate animation
+        this.playAnimation('rotateIcon');
+
+
       }
     }
   });
