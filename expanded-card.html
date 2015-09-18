@@ -1,26 +1,61 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <dom-module id="expanded-card">
-    <template></template>
+  <template>
+    <div class="vertical layout">
+      <paper-icon-button class="self-end" id="expandButton"></paper-icon-button>
+      <iron-collapse id="contentCollapse" opened="{{expanded}}">
+        <content></content>
+      </iron-collapse>
+    </div>
+  </template>
 
-    <script>
-    Polymer({
-        is: 'expanded-card',
+  <script>
+  Polymer({
+    is: 'expanded-card',
+    behaviours: [],
+    properties: {
+      expanded: {
+        type: Boolean,
+        value: false
+      },
 
-        // Fires when an instance of the element is created
-        created: function() {},
+      expandMoreTitle: {
+        type: String,
+        value: "Show More"
+      },
 
-        // Fires when the local DOM has been fully prepared
-        ready: function() {},
+      expandLessTitle: {
+        type: String,
+        value: "Show Less"
+      }
+    }
 
-        // Fires when the element was inserted into the document
-        attached: function() {},
+    // Fires when an instance of the element is created
+    created: function() {},
 
-        // Fires when the element was removed from the document
-        detached: function() {},
+    // Fires when the local DOM has been fully prepared
+    ready: function() {},
 
-        // Fires when an attribute was added, removed, or updated
-        attributeChanged: function(name, type) {}
-    });
-    </script>
+    // Fires when the element was inserted into the document
+    attached: function() {},
+
+    // Fires when the element was removed from the document
+    detached: function() {},
+
+    // Fires when an attribute was added, removed, or updated
+    attributeChanged: function(name, type) {
+      if(name == "expanded") {
+        //Get new expanded attribute
+        var expanded = this.getAtrribute(name);
+        if (expanded) {
+          this.$.expandButton.title = this.expandLessTitle;
+        }
+        else {
+          this.$.expandButton.title = this.expandMoreTitle;
+        }
+      }
+    }
+  });
+  </script>
 </dom-module>
