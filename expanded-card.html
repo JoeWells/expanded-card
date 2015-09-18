@@ -93,6 +93,14 @@
       else {
         this.$.expandButton.icon = "icons:expand-more";
       }
+
+      //Set initial title
+      if (this.expanded) {
+        this.$.expandButton.title = this.expandLessTitle;
+      }
+      else {
+        this.$.expandButton.title = this.expandMoreTitle;
+      }
     },
 
     // Fires when the element was inserted into the document
