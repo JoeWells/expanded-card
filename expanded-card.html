@@ -1,12 +1,17 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../neon-animation/neon-animation-runner-behaviour.html">
+<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../neon-animation/animations/transform-animation.html">
+<link rel="import" href="../iron-collapse/iron-collapse.html">
+<link rel="import" href="bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+
 
 <dom-module id="expanded-card">
   <template>
     <div class="vertical layout">
-      <paper-icon-button class="self-end" id="expandButton"></paper-icon-button>
-      <iron-collapse id="contentCollapse" opened="{{expanded}}">
+      <paper-icon-button on-tap="toggleExpand" class="self-end" id="expandButton"></paper-icon-button>
+      <iron-collapse id="contentCollapse" opened="{{expanded}}" >
         <content></content>
       </iron-collapse>
     </div>
@@ -15,11 +20,13 @@
   <script>
   Polymer({
     is: 'expanded-card',
-    behaviours: [Polymer.NeonAnimationRunnerBehaviour],
+    behaviors: [Polymer.NeonAnimationRunnerBehavior],
     properties: {
       expanded: {
         type: Boolean,
-        value: false
+        value: false,
+        notify: true,
+        observer: '_expandedChanged'
       },
       expandMoreTitle: {
         type: String,
@@ -60,19 +67,27 @@
     },
     _onNeonAnimationFinish: function() {
       if(this.expanded) {
-        this.$.iconButton.icon = "icons:expand-less";
+        this.$.expandButton.icon = "icons:expand-less";
       }
       else {
-        this.$.iconButton.icon = "icons:expand-more";
+        this.$.expandButton.icon = "icons:expand-more";
       }
-      this.$.iconButton.disabled = false;
+      this.$.expandButton.disabled = false;
     },
 
     // Fires when an instance of the element is created
     created: function() {},
 
     // Fires when the local DOM has been fully prepared
-    ready: function() {},
+    ready: function() {
+      //Set initial icon
+      if(this.expanded) {
+        this.$.expandButton.icon = "icons:expand-less";
+      }
+      else {
+        this.$.expandButton.icon = "icons:expand-more";
+      }
+    },
 
     // Fires when the element was inserted into the document
     attached: function() {},
@@ -81,30 +96,30 @@
     detached: function() {},
 
     // Fires when an attribute was added, removed, or updated
-    attributeChanged: function(name, type) {
-      if(name == "expanded") {
-        //Get new expanded attribute
-        var expanded = this.getAtrribute(name);
-
-        //Set title
-        if (expanded) {
-          this.$.expandButton.title = this.expandLessTitle;
-        }
-        else {
-          this.$.expandButton.title = this.expandMoreTitle;
-        }
-
-        if((this.$.expandButton.icon == this.) && ) {
-          return;
-        }
-
-        //Disable button to prevent clicks
-        this.$.expandButton.disabled = true;
-        //Play rotate animation
-        this.playAnimation('rotateIcon');
+    _expandedChanged: function(newVal, oldVal) {
 
 
+      //If icon is already set no need to animate!
+      if((newVal && (this.$.expandButton.icon == "icons:expand-less")) || (!newVal && (this.$.expandButton.icon == "icons:expand-more"))) {
+        return;
       }
+
+      //Set title
+      if (newVal) {
+        this.$.expandButton.title = this.expandLessTitle;
+      }
+      else {
+        this.$.expandButton.title = this.expandMoreTitle;
+      }
+
+      //Disable button to prevent clicks
+      //this.$.expandButton.disabled = true;
+      //Play rotate animation
+      this.cancelAnimation();
+      this.playAnimation('rotateIcon');
+    },
+    toggleExpand: function() {
+      this.expanded = !this.expanded;
     }
   });
   </script>
