@@ -11,7 +11,7 @@
   <template>
     <div class="vertical layout">
       <paper-icon-button on-tap="toggleExpand" class="self-end" id="expandButton"></paper-icon-button>
-      <iron-collapse id="contentCollapse" opened="{{expanded}}" >
+      <iron-collapse id="contentCollapse" opened="{{expanded}}">
         <content></content>
       </iron-collapse>
     </div>
@@ -54,9 +54,10 @@
             'rotateIcon': {
               name: 'transform-animation',
               node: this.$.expandButton,
+              transformOrigin: "50% 50%",
               transformFrom: "rotate(0)",
               transformTo: "rotate(180deg)",
-              timing: {duration: 500}
+              timing: {duration: 350}
             }
           }
         }
@@ -72,7 +73,6 @@
       else {
         this.$.expandButton.icon = "icons:expand-more";
       }
-      this.$.expandButton.disabled = false;
     },
 
     // Fires when an instance of the element is created
@@ -112,11 +112,20 @@
         this.$.expandButton.title = this.expandMoreTitle;
       }
 
-      //Disable button to prevent clicks
-      //this.$.expandButton.disabled = true;
-      //Play rotate animation
-      this.cancelAnimation();
-      this.playAnimation('rotateIcon');
+      if(this.enableRotateAnimation)
+      {
+        //Play rotate animation
+        this.cancelAnimation();
+        this.playAnimation('rotateIcon');
+      }
+      else {
+        if(this.expanded) {
+          this.$.expandButton.icon = "icons:expand-less";
+        }
+        else {
+          this.$.expandButton.icon = "icons:expand-more";
+        }
+      }
     },
     toggleExpand: function() {
       this.expanded = !this.expanded;
