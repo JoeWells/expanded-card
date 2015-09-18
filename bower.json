@@ -1,22 +1,28 @@
 {
-  "name": "animated-gallery",
+  "name": "expanded-card",
   "version": "0.0.1",
-  "description": "Material design animated gallery",
+  "description": "Allows paper-material cards to be expanded using iron-collapse and an animated expand icon",
   "license": "MIT",
-  "main": "animated-gallery.html",
+  "main": "exapanded-card.html",
   "keywords": [
     "polymer",
     "web-components",
     "material",
     "design",
     "Google",
-    "gallery",
-    "images",
     "animated",
     "animation",
     "neon-animation",
-    "ajax",
-    "iron-ajax"
+    "card",
+    "expand",
+    "expanded",
+    "enlarge",
+    "iron-collapse",
+    "collapse",
+    "icon",
+    "paper-icon-button",
+    "icon-button",
+    "button"
   ],
   "ignore": [
     "**/.*",
@@ -30,6 +36,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/JoeWells/animated-gallery.git"
+    "url": "git://github.com/JoeWells/exapanded-card.git"
   }
 }
