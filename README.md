@@ -5,7 +5,7 @@ This Polymer element  is designed to be used inside of paper-material as a card 
 
 ## Demo
 
-[Check it live!](http://JoeWells.github.io/expanded-card)
+[Check it live!](http://JoeWells.github.io/expanded-card/demo)
 
 ## Install
 
