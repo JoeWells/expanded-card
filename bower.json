@@ -37,6 +37,9 @@
     "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.3",
     "polymer": "Polymer/polymer#^1.0.0"
   },
+  "devDependencies": {
+    "paper-material": "PolymerElements/paper-material#~1.0.2"
+  },
   "authors": [
     {
       "name": "Joe Wells",
