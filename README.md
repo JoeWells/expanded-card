@@ -1,6 +1,6 @@
 # &lt;expanded-card&gt;
 
-#### _This element was used for an individual project which has now been completed. I do not intend to work on this any further, however any pull requests are welcome._
+#### _This functionality is now available using a combination of [iron-collpase](https://www.webcomponents.org/element/PolymerElements/iron-collapse/) and [paper-icon-button](https://www.webcomponents.org/element/PolymerElements/paper-icon-button) without the need for a custom element - see [paper-card demos](https://www.webcomponents.org/element/PolymerElements/paper-card/demo/demo/index.html)._
 
 This Polymer element  is designed to be used inside of paper-material as a card and displays a [paper-icon-button](https://elements.polymer-project.org/elements/paper-icon-button) with an expand icon. The element also wraps the content that appears when expanded using [iron-collapse](https://elements.polymer-project.org/elements/iron-collapse). A rotation animation is also displayed when the expansion icon is pressed using [neon-animation](https://elements.polymer-project.org/elements/neon-animation)
 
